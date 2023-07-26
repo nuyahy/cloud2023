@@ -2,6 +2,7 @@ package com.nuyahy.springcloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * 文件描述
@@ -21,6 +22,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Copyright © 2023 Hundsun Technologies   Inc. All Rights Reserved
  **/
 @SpringBootApplication
+@EnableEurekaClient
 public class PaymentMain8081 {
     public static void main(String[] args) {
         SpringApplication.run(PaymentMain8081.class, args);
