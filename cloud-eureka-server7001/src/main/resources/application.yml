@@ -8,3 +8,6 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: http://eureka7002.com:7002/eureka/
+  #自我保护机制，默认开启
+  server:
+    enable-self-preservation: false
