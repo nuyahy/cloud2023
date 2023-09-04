@@ -1,10 +1,12 @@
 package com.nuyahy.springcloud;
 
+import com.nuyahy.myrule.MySelfRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 
 /**
  * 文件描述
@@ -25,6 +27,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  **/
 @EnableEurekaClient
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
+@RibbonClient(name = "CLOUD-PROVIDER-PAYMENT", configuration = MySelfRule.class)
 public class OrderMain80 {
     public static void main(String[] args) {
         SpringApplication.run(OrderMain80.class, args);

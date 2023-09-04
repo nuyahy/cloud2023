@@ -28,3 +28,4 @@ eureka:
   instance:
     instance-id: eureka8002
     prefer-ip-address: true
+    ip-address: localhost

@@ -3,6 +3,7 @@ package com.nuyahy.springcloud.controller;
 import com.nuyahy.springcloud.entities.CommonResult;
 import com.nuyahy.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -42,6 +43,17 @@ public class OrderController {
 
     @GetMapping("/comsumer/payment/get/{id}")
     public CommonResult<Payment> getPayment(@PathVariable("id")Long id){
-        return restTemplate.getForObject(PAYMENT_URL+"/payment/get/"+id, CommonResult.class);
+        return restTemplate. getForObject(PAYMENT_URL+"/payment/get/"+id, CommonResult.class);
+    }
+
+    @GetMapping("/comsumer/payment/getForEntity/{id}")
+    public CommonResult<Payment> getPaymentEntity(@PathVariable("id")Long id){
+        ResponseEntity<CommonResult> forEntity = restTemplate.getForEntity(PAYMENT_URL + "/payment/get/" + id, CommonResult.class);
+        if (forEntity.getStatusCode().is2xxSuccessful()){
+            log.info("header - {}, body - {}, status - {}", forEntity.getHeaders(), forEntity.getBody(), forEntity.getStatusCodeValue());
+            return forEntity.getBody();
+        }else {
+           return new CommonResult<>(forEntity.getStatusCode().value(), "操作失败");
+        }
     }
 }
