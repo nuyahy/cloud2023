@@ -1,0 +1,70 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:nuyahy/sprincloud-config.git
+          search-paths:
+            - springcloud-config
+          strict-host-key-checking: true
+          private-key:
+            -----BEGIN OPENSSH PRIVATE KEY-----
+            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
+            4BZx5xwaa/603vhqhWHtgkVx3m0=
+            -----END OPENSSH PRIVATE KEY-----
+      label: master
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://localhost:7001/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'
